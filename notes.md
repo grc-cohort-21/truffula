@@ -4,10 +4,16 @@ As part of Wave 0, please fill out notes for each of the below files. They are i
 PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 
 ## App.java
+- main application that calls the other classes
+- takes in command line options (String[] args) and passes those to the truffelaOptions 
+- truffelaOptions object is passed to truffulaPrinter
 
 ## ConsoleColor.java
+- enum
+- a list of valid terminal colors with terminal string color codes
 
 ## ColorPrinter.java / ColorPrinterTest.java
+- 
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
 
