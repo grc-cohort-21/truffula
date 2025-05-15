@@ -42,7 +42,7 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 
 - Methods:
  - [ ] getCurrentColor
- - [ ] setCurrentColor - [ ] BLACK - [ ] RED - [ ] GREEN - [ ] YELLOW - [ ] BLUE - [ ] PURPLE [ ] - [ ] CYAN - [ ] WHITE - [ ] RESET
+ - [ ] setCurrentColor - [x] BLACK - [x] RED - [x] GREEN - [ ] YELLOW - [ ] BLUE - [ ] PURPLE [ ] - [ ] CYAN - [ ] WHITE - [ ] RESET
  - [ ] println (String message)
  - [ ] println (String message, boolean reset)
  - [ ] print (String message)
