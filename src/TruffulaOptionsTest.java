@@ -2,17 +2,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 public class TruffulaOptionsTest {
 
-  // Tests performance with correct input
+  // Tests TruffulaOptions performance with correct input
 
   @Test
   void testValidDirectoryIsSet(@TempDir File tempDir) throws FileNotFoundException {
@@ -91,7 +89,7 @@ public class TruffulaOptionsTest {
     assertTrue(options.isUseColor());
   }
 
-// Tests performance with Incorrect input
+// Tests TruffulaOptions performance with Incorrect input
 
   @Test
   void testDirectoryPathArgumentMissingThrowsIllegalArgument(){
