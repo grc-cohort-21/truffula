@@ -120,6 +120,8 @@ public class TruffulaOptions  {
           colorflag = false;
         } else if (args[i].equals("-h")) {
           hiddenflag = true;
+        } else {
+          throw new IllegalArgumentException("Unknown Argument");
         }
       }
     }
