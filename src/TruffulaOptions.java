@@ -110,39 +110,32 @@ public class TruffulaOptions  {
 
     boolean colorflag = true;
     boolean hiddenflag = false;
-    String potentialpath = "";
+    String potentialPath = args[args.length-1];
 
-    for (int i = 0; i < args.length; i++) {
-      if (i == args.length - 1) {
-        potentialpath = args[i];
-      } else {
-        if (args[i].equals("-nc")) {
-          colorflag = false;
-        } else if (args[i].equals("-h")) {
-          hiddenflag = true;
-        } else {
-          throw new IllegalArgumentException("Unknown Argument");
-        }
-      }
+    if (potentialPath.isEmpty() || potentialPath.startsWith("-")) {
+      throw new IllegalArgumentException("Missing path argument.");
     }
 
-    root = assignPath(potentialpath);
-    useColor = colorflag;
-    showHidden = hiddenflag;
+    for (int i = 0; i < args.length-1; i++) {
+      if (args[i].equals("-nc")) {
+        colorflag = false;
+      } else if (args[i].equals("-h")) {
+        hiddenflag = true;
+      } else {
+        throw new IllegalArgumentException("Unknown Argument");
+      }
+    }
+    this.root = assignPath(potentialPath);
+    this.useColor = colorflag;
+    this.showHidden = hiddenflag;
   }
 
   private File assignPath(String path) throws IllegalArgumentException, FileNotFoundException{
-        File directory = new File(path);
-
-        if (!directory.isDirectory()) {
-          throw new IllegalArgumentException("Path must be a valid directory: " + path);
-        }
-
-        if (!directory.exists()) {
-          throw new FileNotFoundException("This directory does not exist: " + path);
-        }
-
-        return directory;
+    File directory = new File(path);
+    if (!directory.exists() || !directory.isDirectory()) {
+      throw new FileNotFoundException("The directory provided is invalid or does not exist: " + path);
+    }
+    return directory;
   }
 
   /**

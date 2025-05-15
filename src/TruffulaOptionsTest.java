@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -75,7 +76,7 @@ public class TruffulaOptionsTest {
     assertTrue(options.isUseColor());
   }
 
-    @Test
+  @Test
   void testValidDirectoryIsSetNoAdditionalArgs(@TempDir File tempDir) throws FileNotFoundException {
     // Arrange: Prepare the arguments with the temp directory
     File directory = new File(tempDir, "subfolder");
@@ -90,45 +91,71 @@ public class TruffulaOptionsTest {
     assertTrue(options.isUseColor());
   }
 
-
 // Tests performance with Incorrect input
 
   @Test
-  void testNoValidDirectoryIsSet(){
-    // Arrange: Prepare the arguments with the temp directory
+  void testPathArgumentMissingThrowsIllegalArgument(){
+    // Arrange: Prepare the arguments without a directory
     String[] args = {"-nc", "-h"};
     // Act: Create TruffulaOptions instance
     // Assert: Check that the illegal argument is thrown with no directory set
     assertThrows(IllegalArgumentException.class,
-    () -> new TruffulaOptions(args),"Expected method to throw IllegalArgumentException for an undefined path.");
+    () -> new TruffulaOptions(args),"Expected method to throw IllegalArgumentException when the path argument is missing.");
   }
 
+
   @Test
-  void testInValidDirectoryIsSet(){
-    // Arrange: Prepare the arguments with the temp directory
-    String[] args = {"-nc", "-h", "bad_directory"};
+  void testSpecifiedDirectoryDoesNotExistThrowsFileNotFound(){
+    // Arrange: Prepare the arguments
+    String[] args = {"-nc", "-h", "/folder/folder/bad_directory"};
     // Act: Create TruffulaOptions instance
     // Assert: Check that the illegal argument is thrown with no directory set
     assertThrows(FileNotFoundException.class,
-    () -> new TruffulaOptions(args),"Expected method to throw FileNotFoundException for an invalid path.");
+    () -> new TruffulaOptions(args),"Expected method to throw FileNotFoundException for a path that does not exist.");
   }
-}
 
   @Test
-  void testValidDirectoryIllegalArgument(@TempDir File tempDir){
+  void testSpecifiedDirectoryPointsToAFileThrowsFileNotFound(@TempDir File tempDir) throws IOException {
+    // Arrange: Prepare the arguments and temporary file
+    File file = new File(tempDir, "this_is_a_file.txt");
+    file.createNewFile();
+    String filePath = file.getAbsolutePath();
+    String[] args = {"-nc", "-h", filePath};
+    // Act: Create TruffulaOptions instance
+    // Assert: Check that the illegal argument is thrown with no directory set
+    assertThrows(FileNotFoundException.class,
+    () -> new TruffulaOptions(args),"Expected method to throw FileNotFoundException for path that points to a file.");
+  }
+
+  @Test
+  void testValidDirectoryIllegalUseColorArgumentThrowsIllegalArgument(@TempDir File tempDir){
     // Arrange: Prepare the arguments with the temp directory
     File directory = new File(tempDir, "subfolder");
     directory.mkdir();
     String directoryPath = directory.getAbsolutePath();
-    String[] args = {"-cn", "-h", directoryPath};
+    String[] args = {"-bad", "-h", directoryPath};
     // Act: Create TruffulaOptions instance
     // Assert: Check that the illegal argument is thrown with bad argument
     assertThrows(IllegalArgumentException.class,
-    () -> new TruffulaOptions(args),"Expected method to throw IllegalArgumentException for an invalid argument.");
+    () -> new TruffulaOptions(args),"Expected method to throw IllegalArgumentException for an invalid color argument.");
   }
 
-   @Test
-  void testValidDirectoryEmptyArgument(@TempDir File tempDir){
+  
+  @Test
+  void testValidDirectoryIllegalShowHiddenArgumentThrowsIllegalArgument(@TempDir File tempDir){
+    // Arrange: Prepare the arguments with the temp directory
+    File directory = new File(tempDir, "subfolder");
+    directory.mkdir();
+    String directoryPath = directory.getAbsolutePath();
+    String[] args = {"-bad", "-nc", directoryPath};
+    // Act: Create TruffulaOptions instance
+    // Assert: Check that the illegal argument is thrown with bad argument
+    assertThrows(IllegalArgumentException.class,
+    () -> new TruffulaOptions(args),"Expected method to throw IllegalArgumentException for an invalid color argument.");
+  }
+
+  @Test
+  void testValidDirectoryWhiteSpaceArgument(@TempDir File tempDir){
     // Arrange: Prepare the arguments with the temp directory
     File directory = new File(tempDir, "subfolder");
     directory.mkdir();
@@ -137,5 +164,6 @@ public class TruffulaOptionsTest {
     // Act: Create TruffulaOptions instance
     // Assert: Check that the illegal argument is thrown with bad argument
     assertThrows(IllegalArgumentException.class,
-    () -> new TruffulaOptions(args),"Expected method to throw IllegalArgumentException for empty argument.");
+    () -> new TruffulaOptions(args),"Expected method to throw IllegalArgumentException for an empty argument.");
   }
+}
