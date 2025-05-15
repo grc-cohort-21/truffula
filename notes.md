@@ -42,17 +42,17 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 
 - Methods:
  - [ ] getCurrentColor
- - [ ] setCurrentColor - [ ] BLACK - [ ] RED - [ ] GREEN - [ ] YELLOW - [ ] BLUE - [ ] PURPLE [ ] - [ ] CYAN - [ ] WHITE - [ ] RESET
+ - [ ] setCurrentColor - [ ] BLACK - [x] RED - [ ] GREEN - [ ] YELLOW - [x] BLUE - [x] PURPLE - [ ] CYAN - [ ] WHITE - [x] RESET
  - [ ] println (String message)
  - [ ] println (String message, boolean reset)
- - [ ] print (String message)
- - [ ] print (String message, boolean reset)
+ - [x] print (String message)
+ - [x] print (String message, boolean reset)
 
 - Behaviors: 
-- [ ] Correct colors applied (default constructor/ parameterized constructor)
-- [ ] Color reset after message by default
-- [ ] Color is not reset if reset flag is false
-- [ ] print / println output correct message
+- [x] Correct colors applied (default constructor/ parameterized constructor)
+- [x] Color reset after message by default
+- [x] Color is not reset if reset flag is false
+- [x] print / println output correct message
 
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
