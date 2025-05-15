@@ -98,7 +98,7 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
  -[x] invalid whiteSpace arguments with valid path argument 
 - [x] valid file path provided in first argument location
 - [x] valid file path provided in second argument location
-- [x] empty args array
+- [x] invalid empty args array
 
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
 
