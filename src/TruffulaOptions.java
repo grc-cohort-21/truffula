@@ -108,13 +108,13 @@ public class TruffulaOptions  {
       throw new IllegalArgumentException("Must have a path argument");
     }
 
-    boolean colorflag = false;
+    boolean colorflag = true;
     boolean hiddenflag = false;
     String potentialpath = "";
 
     for (String string : args) {
       if (string.equals("-nc")) {
-        colorflag = true;
+        colorflag = false;
       } else if (string.equals("-h")) {
         hiddenflag = true;
       } else {
