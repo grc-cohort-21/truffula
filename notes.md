@@ -65,7 +65,7 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
  - -nc  : Do not use color (color is enabled by default).
 
 **To Do**
- [ ] Implement public TruffulaOptions(String[] args) constructor (line 103)
+ [x] Implement public TruffulaOptions(String[] args) constructor (line 103)
 
 ### TruffulaOptionsTest.java
 
