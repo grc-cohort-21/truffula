@@ -162,7 +162,7 @@ public class TruffulaOptionsTest {
     File directory = new File(tempDir, "subfolder");
     directory.mkdir();
     String directoryPath = directory.getAbsolutePath();
-    String[] args = {"    ", "-h", directoryPath};
+    String[] args = {"    ", "    ", directoryPath};
     // Act: Create TruffulaOptions instance
     // Assert: Check that the illegal argument is thrown with bad argument
     assertThrows(IllegalArgumentException.class,
