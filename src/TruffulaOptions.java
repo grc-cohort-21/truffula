@@ -112,13 +112,15 @@ public class TruffulaOptions  {
     boolean hiddenflag = false;
     String potentialpath = "";
 
-    for (String string : args) {
-      if (string.equals("-nc")) {
-        colorflag = false;
-      } else if (string.equals("-h")) {
-        hiddenflag = true;
+    for (int i = 0; i < args.length; i++) {
+      if (i == args.length - 1) {
+        potentialpath = args[i];
       } else {
-        potentialpath = string;
+        if (args[i].equals("-nc")) {
+          colorflag = false;
+        } else if (args[i].equals("-h")) {
+          hiddenflag = true;
+        }
       }
     }
 
