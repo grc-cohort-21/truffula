@@ -1,4 +1,7 @@
+import java.io.File;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -111,8 +114,26 @@ public class TruffulaPrinter {
     // - For Wave 6: Use AlphabeticalFileSorter
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
+    
+    File path = options.getRoot();
+  
+   // out.println("printTree was called!");
+    //out.println("My options are: " + options);
+   
+    String string = "";
+    printTreeHelper(path, string);
+  }
 
-    out.println("printTree was called!");
-    out.println("My options are: " + options);
+  public void printTreeHelper(File path, String string)
+  {
+    out.println(string + path.getName());
+    if(path.isDirectory()){
+      File[] directoryTree = path.listFiles();
+      Arrays.sort(directoryTree);
+      for(File file : directoryTree)
+      {
+        printTreeHelper(file, string + "  ");
+      }
+    }
   }
 }
