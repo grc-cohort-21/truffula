@@ -126,14 +126,16 @@ public class TruffulaPrinter {
 
   public void printTreeHelper(File path, String string)
   {
-    out.println(string + path.getName());
     if(path.isDirectory()){
+      out.println(string + path.getName() + "/");
       File[] directoryTree = path.listFiles();
       Arrays.sort(directoryTree);
       for(File file : directoryTree)
       {
-        printTreeHelper(file, string + "  ");
+        printTreeHelper(file, string + "   ");
       }
+    } else {
+      out.println(string + path.getName());
     }
   }
 }
