@@ -1,7 +1,5 @@
 import java.io.File;
 import java.io.PrintStream;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -118,13 +116,15 @@ public class TruffulaPrinter {
     //out.println("My options are: " + options);
 
     boolean showHidden = options.isShowHidden();
+    boolean useColor = options.isUseColor();
     File path = options.getRoot();
+
     String string = "";
     int counter = 0;
-    printTreeHelper(path, string, showHidden, counter);
+    printTreeHelper(path, string, showHidden, useColor, counter);
   }
 
-  private void printTreeHelper(File path, String spaces, boolean showHidden, int counter) { 
+  private void printTreeHelper(File path, String spaces, boolean showHidden, boolean useColor, int counter) { 
     String pathName = path.getName();
     
     // added this condition here so that we are no longer recursing through the hidden directories 
@@ -140,15 +140,16 @@ public class TruffulaPrinter {
   
     // ColorPrinter "out" has default consoleColor WHITE. Concatenating colorsSequence.get(counter) instead of using 
     // setCurrentColor was causing both the default color code and the intended color code to be added to the string.
+    // added useColor boolean check although not specified in instructions, the -nc flag would be pointless without it.
     ConsoleColor color = colorSequence.get(counter);
-    out.setCurrentColor(color);
+    if(useColor) out.setCurrentColor(color);
 
     if(path.isDirectory()){
       out.println(spaces + pathName + "/");
       File[] directoryTree = path.listFiles();
       directoryTree = AlphabeticalFileSorter.sort(directoryTree);
       for(File file : directoryTree) {
-        printTreeHelper(file, spaces + "   ", showHidden, counter + 1);
+        printTreeHelper(file, spaces + "   ", showHidden, useColor, counter + 1);
       }
     } else {
       out.println(spaces + pathName);

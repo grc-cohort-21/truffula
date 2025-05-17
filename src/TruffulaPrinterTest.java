@@ -196,8 +196,8 @@ public class TruffulaPrinterTest {
         cat.createNewFile();
         dog.createNewFile();
 
-        // Set up TruffulaOptions with showHidden = false and useColor = true
-        TruffulaOptions options = new TruffulaOptions(myFolder, false, true);
+        // Set up TruffulaOptions with showHidden = false and useColor = false
+        TruffulaOptions options = new TruffulaOptions(myFolder, false, false);
 
         // Capture output using a custom PrintStream
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -287,8 +287,8 @@ public class TruffulaPrinterTest {
         cat.createNewFile();
         dog.createNewFile();
 
-        // Set up TruffulaOptions with showHidden = false and useColor = true
-        TruffulaOptions options = new TruffulaOptions(myFolder, false, true);
+        // Set up TruffulaOptions with showHidden = false and useColor = false
+        TruffulaOptions options = new TruffulaOptions(myFolder, false, false);
 
         // Capture output using a custom PrintStream
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -377,8 +377,8 @@ public class TruffulaPrinterTest {
         cat.createNewFile();
         dog.createNewFile();
 
-        // Set up TruffulaOptions with showHidden = true and useColor = true
-        TruffulaOptions options = new TruffulaOptions(myFolder, true, true);
+        // Set up TruffulaOptions with showHidden = true and useColor = false
+        TruffulaOptions options = new TruffulaOptions(myFolder, true, false);
 
         // Capture output using a custom PrintStream
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
