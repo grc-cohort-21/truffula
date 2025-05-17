@@ -417,7 +417,6 @@ public class TruffulaPrinterTest {
         assertEquals(expected.toString(), output);
     }
 
-
     @Test
     public void testPrintTree_DefaultColorScheme_NotSorted_HideHiddenFiles(@TempDir File tempDir) throws IOException {
         // Build the example directory structure:
@@ -430,6 +429,10 @@ public class TruffulaPrinterTest {
         //          Cat.png
         //          cat.png
         //          Dog.png
+        //          sports/
+        //             football.txt
+        //             baseball.txt
+        //             basketball.txt
         //       notes.txt
         //       README.md
         //    zebra.txt
@@ -468,6 +471,19 @@ public class TruffulaPrinterTest {
         File dog = new File(images, "Dog.png");
         cat.createNewFile();
         dog.createNewFile();
+
+        // Create subdirectory "sports" in images
+        File sports = new File(images, "sports");
+        assertTrue(sports.mkdir(), "sports directory should be created");
+
+        // Create files in sports
+        File baseball = new File(sports, "baseball.txt");
+        File basketball = new File(sports, "basketball.txt");
+        File football = new File(sports, "football.txt");
+        
+        baseball.createNewFile();
+        basketball.createNewFile();
+        football.createNewFile();
 
         // Set up TruffulaOptions with showHidden = false and useColor = true
         TruffulaOptions options = new TruffulaOptions(myFolder, false, true);
@@ -500,6 +516,10 @@ public class TruffulaPrinterTest {
         expected.append(yellow).append("      images/").append(nl).append(reset);
         expected.append(white).append("         cat.png").append(nl).append(reset);
         expected.append(white).append("         Dog.png").append(nl).append(reset);
+        expected.append(white).append("         sports/").append(nl).append(reset);
+        expected.append(purple).append("            baseball.txt").append(nl).append(reset);
+        expected.append(purple).append("            basketball.txt").append(nl).append(reset);
+        expected.append(purple).append("            football.txt").append(nl).append(reset);
         expected.append(yellow).append("      notes.txt").append(nl).append(reset);
         expected.append(yellow).append("      README.md").append(nl).append(reset);
         expected.append(purple).append("   zebra.txt").append(nl).append(reset);
@@ -520,6 +540,10 @@ public class TruffulaPrinterTest {
         //          Cat.png
         //          cat.png
         //          Dog.png
+        //          sports/
+        //             football.txt
+        //             baseball.txt
+        //             basketball.txt
         //       notes.txt
         //       README.md
         //    zebra.txt
@@ -558,6 +582,19 @@ public class TruffulaPrinterTest {
         File dog = new File(images, "Dog.png");
         cat.createNewFile();
         dog.createNewFile();
+
+        // Create subdirectory "sports" in images
+        File sports = new File(images, "sports");
+        assertTrue(sports.mkdir(), "sports directory should be created");
+
+        // Create files in sports
+        File baseball = new File(sports, "baseball.txt");
+        File basketball = new File(sports, "basketball.txt");
+        File football = new File(sports, "football.txt");
+        
+        baseball.createNewFile();
+        basketball.createNewFile();
+        football.createNewFile();
 
         // Set up TruffulaOptions with showHidden = true and useColor = true
         TruffulaOptions options = new TruffulaOptions(myFolder, true, true);
@@ -591,6 +628,10 @@ public class TruffulaPrinterTest {
         expected.append(yellow).append("      images/").append(nl).append(reset);
         expected.append(white).append("         cat.png").append(nl).append(reset);
         expected.append(white).append("         Dog.png").append(nl).append(reset);
+        expected.append(white).append("         sports/").append(nl).append(reset);
+        expected.append(purple).append("            baseball.txt").append(nl).append(reset);
+        expected.append(purple).append("            basketball.txt").append(nl).append(reset);
+        expected.append(purple).append("            football.txt").append(nl).append(reset);
         expected.append(yellow).append("      notes.txt").append(nl).append(reset);
         expected.append(yellow).append("      README.md").append(nl).append(reset);
         expected.append(purple).append("   zebra.txt").append(nl).append(reset);
@@ -598,5 +639,5 @@ public class TruffulaPrinterTest {
         // Assert that the output matches the expected output exactly
         assertEquals(expected.toString(), output);
     }
-
+    
 }
