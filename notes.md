@@ -8,8 +8,8 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 - takes in command line options (String[] args) and passes those to the truffelaOptions 
 - truffelaOptions object is passed to truffulaPrinter
 
-*To Do**
-- [ ] Implement public static void main(String[] args) (line 43)
+**To Do**
+- [x] Implement public static void main(String[] args) (line 43)
 
 
 ## ConsoleColor.java
@@ -28,7 +28,7 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 - You can create your own PrintStream objects to write to files, buffers, etc.  (System.out is a predefined PrintStream that prints to the console.)
 
 **To Do**
- - [ ] Implement the print(String message, boolean reset) method (line 88)
+ - [x] Implement the print(String message, boolean reset) method (line 88)
 
 ### ColorPrinterTest.java
 - testPrintlnWithRedColorAndReset:
@@ -40,19 +40,28 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 **To Do**
 -[x] Implement multiple tests to validate ColorPrinter methods/behavior (should be able to validate multiple methods per test).
 
-- Methods:
- - [x] getCurrentColor
- - [x] setCurrentColor - [x] BLACK - [x] RED - [x] GREEN - [ ] YELLOW - [x] BLUE - [x] PURPLE - [x] CYAN - [x] WHITE - [x] RESET
- - [x] println (String message)
- - [x] println (String message, boolean reset)
- - [x] print (String message)
- - [x] print (String message, boolean reset)
+  - Methods:
+    - [x] getCurrentColor
+    - [x] setCurrentColor 
+      - [x] BLACK 
+      - [x] RED 
+      - [x] GREEN 
+      - [x] YELLOW 
+      - [x] BLUE 
+      - [x] PURPLE 
+      - [x] CYAN 
+      - [x] WHITE 
+      - [x] RESET
+    - [x] println (String message)
+    - [x] println (String message, boolean reset)
+    - [x] print (String message)
+    - [x] print (String message, boolean reset)
 
-- Behaviors: 
-- [x] Correct colors applied (default constructor/ parameterized constructor)
-- [x] Color reset after message by default
-- [x] Color is not reset if reset flag is false
-- [x] print / println output correct message
+  - Behaviors: 
+    - [x] Correct colors applied (default constructor/ parameterized constructor)
+    - [x] Color reset after message by default
+    - [x] Color is not reset if reset flag is false
+    - [x] print / println output correct message
 
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
@@ -65,7 +74,7 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
  - -nc  : Do not use color (color is enabled by default).
 
 **To Do**
- [x] Implement public TruffulaOptions(String[] args) constructor (line 103)
+- [x] Implement public TruffulaOptions(String[] args) constructor (line 103)
 
 ### TruffulaOptionsTest.java
 
@@ -76,29 +85,29 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 - String[] args = {"-nc", "-h", directoryPath}; Simulates command-line arguments 
 
 **To Do**
--[x] Implement multiple tests to validate TruffulaOptions methods/behavior (should be able to validate multiple methods per test).
+- [x] Implement multiple tests to validate TruffulaOptions methods/behavior (should be able to validate multiple methods per test).
 
-- Methods:
- - [x] getRoot
- - [x] isShowHidden
- - [x] toString
- - [x] isUseColor
+  - Methods:
+    - [x] getRoot
+    - [x] isShowHidden
+    - [x] toString
+    - [x] isUseColor
 
-- Behaviors:
-- [x] valid path argument with no flag arguments
-- [x] valid path argument with only useColor flag argument
-- [x] valid path argument with only showHidden flag argument
-- [x] valid path argument with both flag arguments
-- [x] valid path argument with both flag arguments (arguments reversed)
-- [x] valid flag arguments with no path argument
-- [x] valid flag arguments with non existent directory path
-- [x] valid flag arguments with directory path argument that points to file
-- [x] invalid useColor argument with valid path argument
-- [x] invalid showHidden argument with valid path argument 
- -[x] invalid whiteSpace arguments with valid path argument 
-- [x] valid file path provided in first argument location
-- [x] valid file path provided in second argument location
-- [x] invalid empty args array
+  - Behaviors:
+    - [x] valid path argument with no flag arguments
+    - [x] valid path argument with only useColor flag argument
+    - [x] valid path argument with only showHidden flag argument
+    - [x] valid path argument with both flag arguments
+    - [x] valid path argument with both flag arguments (arguments reversed)
+    - [x] valid flag arguments with no path argument
+    - [x] valid flag arguments with non existent directory path
+    - [x] valid flag arguments with directory path argument that points to file
+    - [x] invalid useColor argument with valid path argument
+    - [x] invalid showHidden argument with valid path argument 
+    - [x] invalid whiteSpace arguments with valid path argument 
+    - [x] valid file path provided in first argument location
+    - [x] valid file path provided in second argument location
+    - [x] invalid empty args array
 
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
 
@@ -106,13 +115,26 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 - TruffulaPrinter is responsible for printing a directory tree structure with optional colored output.
 
 **To Do**
-- [ ] Implement printTree method. (line 105)
+- [x] Implement printTree method. (line 105)
 
 ### TruffulaPrinterTest.java
 - Verifies that the directory tree is printed correctly.
 
 **To Do**
-- [ ] Implement additional tests?
+- [x] Implement additional tests
+
+ - Methods:
+    - [x] printTree
+    - [x] printTreeHelper
+
+  - Behaviors:
+    - [x] print a directory tree given a root path
+    - [x] print a directory tree including hidden files
+    - [x] print a directory tree according to the default color scheme
+    - [x] print a directory tree sorted alphabetically
+  
+  - AlphabeticalFileSorter Utility Class:
+    - [x] sort
 
 
 ## AlphabeticalFileSorter.java
