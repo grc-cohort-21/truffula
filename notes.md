@@ -38,7 +38,7 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
  4. String result = outputStream.toString(); *Converts the buffer's contents (what was printed) into a string.*
 
 **To Do**
--[x] Implement multiple tests to validate ColorPrinter methods/behavior (should be able to validate multiple methods per test).
+- [x] Implement multiple tests to validate ColorPrinter methods/behavior (should be able to validate multiple methods per test).
 
   - Methods:
     - [x] getCurrentColor
