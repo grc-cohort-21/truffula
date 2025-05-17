@@ -114,28 +114,37 @@ public class TruffulaPrinter {
     // - For Wave 6: Use AlphabeticalFileSorter
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
-    
+    boolean showHidden = options.isShowHidden();
     File path = options.getRoot();
   
    // out.println("printTree was called!");
     //out.println("My options are: " + options);
    
     String string = "";
-    printTreeHelper(path, string);
+    printTreeHelper(path, string, showHidden);
+
   }
 
-  public void printTreeHelper(File path, String string)
-  {
+  private void printTreeHelper(File path, String spaces, boolean showHidden)
+  { String pathName = path.getName();
     if(path.isDirectory()){
-      out.println(string + path.getName() + "/");
+      printHidden(showHidden, spaces, pathName + "/");
       File[] directoryTree = path.listFiles();
       Arrays.sort(directoryTree);
       for(File file : directoryTree)
       {
-        printTreeHelper(file, string + "   ");
+        printTreeHelper(file, spaces + "   ", showHidden);
       }
     } else {
-      out.println(string + path.getName());
+      printHidden(showHidden, spaces, pathName);
+    }
+  }
+  
+  private void printHidden(boolean showHidden, String spaces, String pathName) {
+    if (showHidden) {
+      out.println(spaces + pathName);
+    } else if (!pathName.startsWith(".")) {
+      out.println(spaces + pathName);
     }
   }
 }
