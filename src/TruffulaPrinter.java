@@ -121,22 +121,25 @@ public class TruffulaPrinter {
     //out.println("My options are: " + options);
    
     String string = "";
-    printTreeHelper(path, string, showHidden);
-
+    int counter = 0;
+    printTreeHelper(path, string, showHidden, counter);
   }
 
-  private void printTreeHelper(File path, String spaces, boolean showHidden)
+  private void printTreeHelper(File path, String spaces, boolean showHidden, int counter)
   { String pathName = path.getName();
+    if (counter > colorSequence.size() - 1) {
+      counter = 0;
+    }
     if(path.isDirectory()){
-      printHidden(showHidden, spaces, pathName + "/");
+      printHidden(showHidden, colorSequence.get(counter) + spaces, pathName + "/");
       File[] directoryTree = path.listFiles();
       Arrays.sort(directoryTree);
       for(File file : directoryTree)
       {
-        printTreeHelper(file, spaces + "   ", showHidden);
+        printTreeHelper(file, spaces + "   ", showHidden, counter + 1);
       }
     } else {
-      printHidden(showHidden, spaces, pathName);
+      printHidden(showHidden, colorSequence.get(counter) + spaces, pathName);
     }
   }
   
