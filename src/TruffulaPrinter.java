@@ -146,7 +146,7 @@ public class TruffulaPrinter {
     if(path.isDirectory()){
       out.println(spaces + pathName + "/");
       File[] directoryTree = path.listFiles();
-      Arrays.sort(directoryTree);
+      directoryTree = AlphabeticalFileSorter.sort(directoryTree);
       for(File file : directoryTree) {
         printTreeHelper(file, spaces + "   ", showHidden, counter + 1);
       }
