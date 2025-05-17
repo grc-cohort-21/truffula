@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TruffulaPrinterTest {
-
+    
     /**
      * Checks if the current operating system is Windows.
      *
@@ -234,7 +234,6 @@ public class TruffulaPrinterTest {
         // Assert that the output matches the expected output exactly
         assertEquals(expected.toString(), output);
     }
-
 
     @Test
     public void testPrintTree_WhiteDefaultColor_NotSorted_HideHiddenFiles(@TempDir File tempDir) throws IOException {
