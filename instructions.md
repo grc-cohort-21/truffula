@@ -5,7 +5,7 @@ The provided tests are VERY MINIMAL. You are expected to be adding thorough test
 You must NOT use the `java.nio` package for any wave! You can only use `java.io`.
 
 ## Wave 0: Understand
-In this wave you will be working to undertsand the files that are provided for you. Open `notes.md` to see a list of the files in the order I recommend you look at them. For each file, write notes in `notes.md` summarizing your understanding and putting down any questions you want to better understand later. This will take a long time, but it is worth it! Do not skimp on this part, you will regret it! A very large part of this project is understanding the OOP structure.
+In this wave you will be working to understand the files that are provided for you. Open `notes.md` to see a list of the files in the order I recommend you look at them. For each file, write notes in `notes.md` summarizing your understanding and putting down any questions you want to better understand later. This will take a long time, but it is worth it! Do not skimp on this part, you will regret it! A very large part of this project is understanding the OOP structure.
 
 Make frequent commits to your `notes.md` as you learn.
 
@@ -197,7 +197,7 @@ These steps are for Mac computers. Please skip to the Windows section if on Wind
    ```
    vim ~/.bashrc
    ```
-1. Press `i` to enter insert mode. If there are already contents in the file, use the arrow keys to move to the bottom of the file and hit enter to add a new line. We will be adding new lines at the end. DO NOT MODIFY THE EXISITING LINES IN THE FILE. If it's currently empty, that's OK too!
+1. Press `i` to enter insert mode. If there are already contents in the file, use the arrow keys to move to the bottom of the file and hit enter to add a new line. We will be adding new lines at the end. DO NOT MODIFY THE EXISTING LINES IN THE FILE. If it's currently empty, that's OK too!
 1. Add the following line at the bottom of the file:
    ```
    export PATH="$HOME/bin:$PATH"
