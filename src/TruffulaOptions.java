@@ -102,12 +102,9 @@ public class TruffulaOptions  {
    */
   public TruffulaOptions(String[] args) throws IllegalArgumentException, FileNotFoundException {
     // TODO: Replace the below lines with your implementation
- 
-    
     if (args.length == 0) {
       throw new IllegalArgumentException("Must have a path argument");
     }
-
     boolean colorflag = true;
     boolean hiddenflag = false;
     String potentialPath = args[args.length-1];
@@ -115,7 +112,6 @@ public class TruffulaOptions  {
     if (potentialPath.isEmpty() || potentialPath.startsWith("-")) {
       throw new IllegalArgumentException("Missing path argument.");
     }
-
     for (int i = 0; i < args.length-1; i++) {
       if (args[i].equals("-nc")) {
         colorflag = false;

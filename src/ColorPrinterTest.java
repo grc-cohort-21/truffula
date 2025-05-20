@@ -65,7 +65,6 @@ class ColorPrinterTest {
     assertEquals(expectedOutput, outputStream.toString());
   }
 
-
   @Test
   void testPrintlnWithBlackColorResetFalse() {
     // Arrange: Capture the printed output
@@ -125,7 +124,6 @@ class ColorPrinterTest {
     // Assert: Verify the printed output
     assertEquals(expectedOutput, outputStream.toString());
   }
-
 
  @Test
   void testPrintlnWithBlackColorAndResetParameterizedConstructor() {

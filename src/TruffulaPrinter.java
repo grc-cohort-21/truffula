@@ -113,7 +113,7 @@ public class TruffulaPrinter {
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
     // out.println("printTree was called!");
-    //out.println("My options are: " + options);
+    // out.println("My options are: " + options);
 
     boolean showHidden = options.isShowHidden();
     boolean useColor = options.isUseColor();
@@ -127,9 +127,6 @@ public class TruffulaPrinter {
   private void printTreeHelper(File path, String spaces, boolean showHidden, boolean useColor, int counter) { 
     String pathName = path.getName();
     
-    // added this condition here so that we are no longer recursing through the hidden directories 
-    // and instead just doing nothing by returning before reaching an out.println() which eliminated 
-    // the need for our printHidden helper method.
     if (!showHidden && pathName.startsWith(".")) {
       return;
     }
@@ -138,9 +135,6 @@ public class TruffulaPrinter {
       counter = 0;
     }
   
-    // ColorPrinter "out" has default consoleColor WHITE. Concatenating colorsSequence.get(counter) instead of using 
-    // setCurrentColor was causing both the default color code and the intended color code to be added to the string.
-    // added useColor boolean check although not specified in instructions, the -nc flag would be pointless without it.
     ConsoleColor color = colorSequence.get(counter);
     if(useColor) out.setCurrentColor(color);
 
@@ -155,13 +149,4 @@ public class TruffulaPrinter {
       out.println(spaces + pathName);
     }
   }
-  // added conditions in printTreeHelper to return if the directory or file is hidden instead of recursing through everything
-  // and then deciding to whether or not to print. 
-  // private void printHidden(boolean showHidden, String spaces, String pathName) {
-  //   if (showHidden) {
-  //     out.println(spaces + pathName);
-  //   } else if (!pathName.startsWith(".")) {
-  //     out.println(spaces + pathName);
-  //   }
-  // }
-}
+ }
